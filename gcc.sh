@@ -41,7 +41,7 @@ function install_gcc_49() {
 	apt update 
 	echo -e $green"[*] Installing GCC 4.9..."
 	apt install gcc-4.9 g++-4.9 -y 
-	echo e $green"[*] Setting GCC"
+	echo -e $green"[*] Setting GCC"
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
 	echo -e $green"[*] Done!"$netral
