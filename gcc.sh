@@ -32,7 +32,6 @@ function install_gcc_49() {
 	command -v add-apt-repository
 		echo -e $yellow"[#] Seems like software-properties-common not installed! Installing..."$netral
 	    apt install software-properties-common -y
-	}
 	echo -e $green"[*] Adding xenial repo..."
 	add-apt-repository "deb http://ports.ubuntu.com/ubuntu-ports xenial main restricted universe multiverse"
 	add-apt-repository "deb http://ports.ubuntu.com/ubuntu-ports xenial-security main restricted universe multiverse"
@@ -62,8 +61,8 @@ function install() {
     echo -e $yellow " Checking For Internet: ${LighGreenF}CONNECTED"
   fi
 	echo -e $green"[*] Installing required packages..."
-	sudo apt update &> /dev/null
-	sudo DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
+	apt update &> /dev/null
+	DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
 	sleep 2
 	echo -e $green"[*] Done!"
 	sleep 3
