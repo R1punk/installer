@@ -25,7 +25,25 @@ function ctrl_c() {
 	sleep 0.5
 	exit 1
 }
-
+# Install required packages
+  ping -c 1 google.com > /dev/null 2>&1
+  if [[ "$?" != 0 ]]
+  then
+    echo -e $yellow " Checking For Internet: ${RedF}FAILED"
+    echo
+    echo -e $red "This Script Needs An Active Internet Connection"
+    echo && sleep 2
+    exit
+  else
+    echo -e $yellow " Checking For Internet: ${LighGreenF}CONNECTED"
+  fi
+	echo -e $green"[*] Installing required packages..."
+	apt update &> /dev/null
+	DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
+	sleep 2
+	echo -e $green"[*] Done!"
+	sleep 3
+	clear && ubuntu
 
 # Install GCC 4.9
 function install_gcc_49() {
@@ -47,25 +65,6 @@ function install_gcc_49() {
 	echo -e $green"[*] Done!"$netral
 }
 
-# Install required packages
-  ping -c 1 google.com > /dev/null 2>&1
-  if [[ "$?" != 0 ]]
-  then
-    echo -e $yellow " Checking For Internet: ${RedF}FAILED"
-    echo
-    echo -e $red "This Script Needs An Active Internet Connection"
-    echo && sleep 2
-    exit
-  else
-    echo -e $yellow " Checking For Internet: ${LighGreenF}CONNECTED"
-  fi
-	echo -e $green"[*] Installing required packages..."
-	apt update &> /dev/null
-	DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
-	sleep 2
-	echo -e $green"[*] Done!"
-	sleep 3
-	clear && ubuntu
 
 function ubuntu() {
 	curl https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/repo-fix.sh > repo.sh && chmod +x repo.sh && bash repo.sh && pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Installer/Ubuntu/ubuntu.sh -O ubuntu.sh && chmod +x ubuntu.sh && bash ubuntu.sh && bash start-ubuntu.sh
