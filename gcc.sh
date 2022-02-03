@@ -48,7 +48,6 @@ function install_gcc_49() {
 }
 
 # Install required packages
-function install() {
   ping -c 1 google.com > /dev/null 2>&1
   if [[ "$?" != 0 ]]
   then
@@ -67,7 +66,6 @@ function install() {
 	echo -e $green"[*] Done!"
 	sleep 3
 	clear && ubuntu
-}
 
 function ubuntu() {
 	curl https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/repo-fix.sh > repo.sh && chmod +x repo.sh && bash repo.sh && pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Installer/Ubuntu/ubuntu.sh -O ubuntu.sh && chmod +x ubuntu.sh && bash ubuntu.sh && bash start-ubuntu.sh
