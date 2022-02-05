@@ -17,17 +17,6 @@ RedF="${Escape}[31m";
 LighGreenF="${Escape}[92m"
 
 # Install required packages
-  ping -c 1 google.com > /dev/null 2>&1
-  if [[ "$?" != 0 ]]
-  then
-    echo -e $yellow " Checking For Internet: ${RedF}FAILED"
-    echo
-    echo -e $red "This Script Needs An Active Internet Connection"
-    echo && sleep 2
-    exit
-  else
-    echo -e $yellow " Checking For Internet: ${LighGreenF}CONNECTED"
-  fi
 	echo -e $green"[*] Installing required packages..."
 	apt update &> /dev/null
 	DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
