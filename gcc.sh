@@ -18,7 +18,7 @@ LighGreenF="${Escape}[92m"
 
 # Install required packages
 	echo -e $green"[*] Installing required packages..."
-	apt update &> /dev/null
+	apt update 
 	DEBIAN_FRONTEND=noninteractive apt install bison build-essential curl flex git gnupg liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils squashfs-tools xsltproc zip zlib1g-dev build-essential libncurses5-dev bzip2 git python -y 
 	sleep 2
 	echo -e $green"[*] Done!"
