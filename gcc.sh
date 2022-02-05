@@ -23,10 +23,9 @@ LighGreenF="${Escape}[92m"
 	sleep 2
 	echo -e $green"[*] Done!"
 	sleep 3
-	clear && install_gcc_49
+	clear 
 
 # Install GCC 4.9
-function install_gcc_49() {
 	command -v add-apt-repository
 		echo -e $yellow"[#] Seems like software-properties-common not installed! Installing..."$netral
 	    apt install software-properties-common -y
@@ -42,5 +41,4 @@ function install_gcc_49() {
 	echo -e $green"[*] Setting GCC"
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
-	echo -e $green"[*] Done!"$netral
-}	
+	echo -e $green"[*] Done!"$netral	
