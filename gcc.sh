@@ -15,16 +15,7 @@ netral="\e[0m"
 Escape="\033";
 RedF="${Escape}[31m";
 LighGreenF="${Escape}[92m"
-# Trap Ctrl + C and call it
-# And insert it in ctrl_c function
-trap ctrl_c INT
-function ctrl_c() {
-	echo ""
-        echo -e $red"[!] Ctrl+C pressed, interrupting..."$netral
-	echo ""
-	sleep 0.5
-	exit 1
-}
+
 # Install required packages
   ping -c 1 google.com > /dev/null 2>&1
   if [[ "$?" != 0 ]]
@@ -43,7 +34,7 @@ function ctrl_c() {
 	sleep 2
 	echo -e $green"[*] Done!"
 	sleep 3
-	clear && ubuntu
+	clear && install_gcc_49
 
 # Install GCC 4.9
 function install_gcc_49() {
@@ -63,11 +54,4 @@ function install_gcc_49() {
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
 	update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50
 	echo -e $green"[*] Done!"$netral
-}
-
-
-function ubuntu() {
-	curl https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/repo-fix.sh > repo.sh && chmod +x repo.sh && bash repo.sh && pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Installer/Ubuntu/ubuntu.sh -O ubuntu.sh && chmod +x ubuntu.sh && bash ubuntu.sh && bash start-ubuntu.sh
-	sleep 2
-	clear && install_gcc_49
-}
+}	
